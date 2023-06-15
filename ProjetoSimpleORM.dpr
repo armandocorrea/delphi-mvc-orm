@@ -9,7 +9,9 @@ uses
   projetosimpleorm.view.utils.interfaces in 'src\view\utils\projetosimpleorm.view.utils.interfaces.pas',
   projetosimpleorm.view.utils.impl.forms in 'src\view\utils\impl\projetosimpleorm.view.utils.impl.forms.pas',
   projetosimpleorm.view.utils.impl.gerenciadorforms in 'src\view\utils\impl\projetosimpleorm.view.utils.impl.gerenciadorforms.pas',
-  projetosimpleorm.view.utils.impl.resourceimage in 'src\view\utils\impl\projetosimpleorm.view.utils.impl.resourceimage.pas';
+  projetosimpleorm.view.utils.impl.resourceimage in 'src\view\utils\impl\projetosimpleorm.view.utils.impl.resourceimage.pas',
+  projetosimpleorm.model.interfaces in 'src\model\projetosimpleorm.model.interfaces.pas',
+  projetosimpleorm.model.impl.configuracao in 'src\model\impl\projetosimpleorm.model.impl.configuracao.pas';
 
 {$R *.res}
 begin
