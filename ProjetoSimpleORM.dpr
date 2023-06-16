@@ -10,8 +10,12 @@ uses
   projetosimpleorm.view.utils.impl.forms in 'src\view\utils\impl\projetosimpleorm.view.utils.impl.forms.pas',
   projetosimpleorm.view.utils.impl.gerenciadorforms in 'src\view\utils\impl\projetosimpleorm.view.utils.impl.gerenciadorforms.pas',
   projetosimpleorm.view.utils.impl.resourceimage in 'src\view\utils\impl\projetosimpleorm.view.utils.impl.resourceimage.pas',
-  projetosimpleorm.model.interfaces in 'src\model\projetosimpleorm.model.interfaces.pas',
-  projetosimpleorm.model.impl.configuracao in 'src\model\impl\projetosimpleorm.model.impl.configuracao.pas';
+  projetosimpleorm.model.resource.interfaces in 'src\model\resource\projetosimpleorm.model.resource.interfaces.pas',
+  projetosimpleorm.model.resource.impl.conexaofiredac in 'src\model\resource\impl\projetosimpleorm.model.resource.impl.conexaofiredac.pas',
+  projetosimpleorm.model.resource.impl.configuracao in 'src\model\resource\impl\projetosimpleorm.model.resource.impl.configuracao.pas',
+  projetosimpleorm.model.service.interfaces in 'src\model\service\projetosimpleorm.model.service.interfaces.pas',
+  projetosimpleorm.model.service.impl.servicesimpleorm in 'src\model\service\impl\projetosimpleorm.model.service.impl.servicesimpleorm.pas',
+  projetosimpleorm.model.resource.impl.factory in 'src\model\resource\impl\projetosimpleorm.model.resource.impl.factory.pas';
 
 {$R *.res}
 begin

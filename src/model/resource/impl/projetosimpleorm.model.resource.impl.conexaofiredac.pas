@@ -1,4 +1,4 @@
-unit projetosimpleorm.model.impl.conexaofiredac;
+unit projetosimpleorm.model.resource.impl.conexaofiredac;
 
 interface
 
@@ -19,7 +19,7 @@ uses
   FireDAC.VCLUI.Wait,
   FireDAC.Comp.Client,
   Data.DB,
-  projetosimpleorm.model.interfaces;
+  projetosimpleorm.model.resource.interfaces;
 
 type
   TConexao = class(TInterfacedObject, IConexao)

@@ -122,8 +122,12 @@
         <DCCReference Include="src\view\utils\impl\projetosimpleorm.view.utils.impl.forms.pas"/>
         <DCCReference Include="src\view\utils\impl\projetosimpleorm.view.utils.impl.gerenciadorforms.pas"/>
         <DCCReference Include="src\view\utils\impl\projetosimpleorm.view.utils.impl.resourceimage.pas"/>
-        <DCCReference Include="src\model\projetosimpleorm.model.interfaces.pas"/>
-        <DCCReference Include="src\model\impl\projetosimpleorm.model.impl.configuracao.pas"/>
+        <DCCReference Include="src\model\resource\projetosimpleorm.model.resource.interfaces.pas"/>
+        <DCCReference Include="src\model\resource\impl\projetosimpleorm.model.resource.impl.conexaofiredac.pas"/>
+        <DCCReference Include="src\model\resource\impl\projetosimpleorm.model.resource.impl.configuracao.pas"/>
+        <DCCReference Include="src\model\service\projetosimpleorm.model.service.interfaces.pas"/>
+        <DCCReference Include="src\model\service\impl\projetosimpleorm.model.service.impl.servicesimpleorm.pas"/>
+        <DCCReference Include="src\model\resource\impl\projetosimpleorm.model.resource.impl.factory.pas"/>
         <RcItem Include="src\assert\configuracao.png">
             <ResourceType>RCDATA</ResourceType>
             <ResourceId>configuracao</ResourceId>

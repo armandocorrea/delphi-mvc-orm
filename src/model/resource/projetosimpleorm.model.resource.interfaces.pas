@@ -1,4 +1,4 @@
-unit projetosimpleorm.model.interfaces;
+unit projetosimpleorm.model.resource.interfaces;
 
 interface
 
@@ -34,6 +34,11 @@ type
 
     function Locking(Value: String): IConfiguracao; overload;
     function Locking: String; overload;
+  end;
+
+  IResource = interface
+    function Conexao: IConexao;
+    function Configuracao: IConfiguracao;
   end;
 
 implementation

@@ -1,11 +1,11 @@
-unit projetosimpleorm.model.impl.configuracao;
+unit projetosimpleorm.model.resource.impl.configuracao;
 
 interface
 
 uses
   System.SysUtils,
   LocalCache4D,
-  projetosimpleorm.model.interfaces;
+  projetosimpleorm.model.resource.interfaces;
 
 type
   TConfiguracao = class(TInterfacedObject, IConfiguracao)
