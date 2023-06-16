@@ -11,8 +11,8 @@ type
     private
       FId: Integer;
       FIdCliente: Integer;
-      FDataEmissao: TDate;
-      FValorTotal: Currency;
+      FDataEmissao: TDateTime;
+      FValorTotal: Double;
     public
       [Campo('ID'), Pk, AutoInc]
       property Id: Integer read FId write FId;
@@ -21,10 +21,10 @@ type
       property IdCliente: Integer read FIdCliente write FIdCliente;
 
       [Campo('DATAEMISSAO')]
-      property DataEmissao: TDate read FDataEmissao write FDataEmissao;
+      property DataEmissao: TDateTime read FDataEmissao write FDataEmissao;
 
-      [Campo('VALORTOTAL')]
-      property ValorTotal: Currency read FValorTotal write FValorTotal;
+      [Campo('VALORTOTAL'), Format('#.##0,00')]
+      property ValorTotal: Double read FValorTotal write FValorTotal;
   end;
 
 implementation

@@ -13,8 +13,8 @@ type
       FIdPedido: Integer;
       FIdProduto: Integer;
       FQuantidade: Integer;
-      FValorUnitario: Currency;
-      FValorTotal: Currency;
+      FValorUnitario: Double;
+      FValorTotal: Double;
     public
       [Campo('ID'), Pk, AutoInc]
       property Id: Integer read FId write FId;
@@ -28,11 +28,11 @@ type
       [Campo('QUANTIDADE')]
       property Quantidade: Integer read FQuantidade write FQuantidade;
 
-      [Campo('VALORUNITARIO')]
-      property ValorUnitario: Currency read FValorUnitario write FValorUnitario;
+      [Campo('VALORUNITARIO'), Format('#.##0,00')]
+      property ValorUnitario: Double read FValorUnitario write FValorUnitario;
 
-      [Campo('VALORTOTAL')]
-      property ValorTotal: Currency read FValorTotal write FValorTotal;
+      [Campo('VALORTOTAL'), Format('#.##0,00')]
+      property ValorTotal: Double read FValorTotal write FValorTotal;
     end;
 
 implementation

@@ -13,9 +13,10 @@ type
     private
       FId: Integer;
       FDescricao: String;
-      FPrecoVenda: Currency;
+      FPrecoVenda: Double;
       FFoto: TStream;
-    procedure SetFoto(const Value: TStream);
+
+      procedure SetFoto(const Value: TStream);
     public
       constructor Create;
       destructor Destroy; override;
@@ -26,8 +27,8 @@ type
       [Campo('DESCRICAO')]
       property Descricao: String read FDescricao write FDescricao;
 
-      [Campo('PRECOVENDA')]
-      property PrecoVenda: Currency read FPrecoVenda write FPrecoVenda;
+      [Campo('PRECOVENDA'), Format('#.##0,00')]
+      property PrecoVenda: Double read FPrecoVenda write FPrecoVenda;
 
       [Campo('FOTO', 'Blob')]
       property Foto: TStream read FFoto write SetFoto;
