@@ -128,6 +128,12 @@
         <DCCReference Include="src\model\service\projetosimpleorm.model.service.interfaces.pas"/>
         <DCCReference Include="src\model\service\impl\projetosimpleorm.model.service.impl.servicesimpleorm.pas"/>
         <DCCReference Include="src\model\resource\impl\projetosimpleorm.model.resource.impl.factory.pas"/>
+        <DCCReference Include="src\model\entity\projetosimpleorm.model.entity.cliente.pas"/>
+        <DCCReference Include="src\model\entity\projetosimpleorm.model.entity.endereco.pas"/>
+        <DCCReference Include="src\model\entity\projetosimpleorm.model.entity.pessoa.pas"/>
+        <DCCReference Include="src\model\entity\projetosimpleorm.model.entity.produto.pas"/>
+        <DCCReference Include="src\model\entity\projetosimpleorm.model.entity.pedido.pas"/>
+        <DCCReference Include="src\model\entity\projetosimpleorm.model.entity.pedidoitens.pas"/>
         <RcItem Include="src\assert\configuracao.png">
             <ResourceType>RCDATA</ResourceType>
             <ResourceId>configuracao</ResourceId>
