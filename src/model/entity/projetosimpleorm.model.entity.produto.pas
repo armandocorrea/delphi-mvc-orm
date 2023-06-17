@@ -24,7 +24,7 @@ type
       [Campo('ID'), Pk, AutoInc]
       property Id: Integer read FId write FId;
 
-      [Campo('DESCRICAO')]
+      [Campo('DESCRICAO', 'String')]
       property Descricao: String read FDescricao write FDescricao;
 
       [Campo('PRECOVENDA'), Format('#.##0,00')]

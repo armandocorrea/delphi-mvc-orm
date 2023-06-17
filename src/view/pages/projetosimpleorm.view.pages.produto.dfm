@@ -11,9 +11,7 @@ object PageProduto: TPageProduto
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
   OnCreate = FormCreate
-  PixelsPerInch = 96
   TextHeight = 13
   object pnlContainer: TPanel
     Left = 0
@@ -63,14 +61,14 @@ object PageProduto: TPageProduto
           ExplicitWidth = 105
           ExplicitHeight = 105
         end
-        object SpeedButton1: TSpeedButton
+        object btnSair: TSpeedButton
           Left = 2
           Top = 2
           Width = 36
           Height = 36
           Align = alClient
           Flat = True
-          OnClick = SpeedButton1Click
+          OnClick = btnSairClick
           ExplicitLeft = 0
           ExplicitTop = 8
           ExplicitWidth = 23
@@ -103,17 +101,16 @@ object PageProduto: TPageProduto
           ExplicitWidth = 105
           ExplicitHeight = 105
         end
-        object SpeedButton2: TSpeedButton
+        object btnSalvar: TSpeedButton
           Left = 2
           Top = 2
           Width = 36
           Height = 36
           Align = alClient
           Flat = True
+          OnClick = btnSalvarClick
           ExplicitLeft = 0
-          ExplicitTop = 8
-          ExplicitWidth = 23
-          ExplicitHeight = 22
+          ExplicitTop = 1
         end
       end
       object Panel4: TPanel
@@ -142,7 +139,7 @@ object PageProduto: TPageProduto
           ExplicitWidth = 105
           ExplicitHeight = 105
         end
-        object SpeedButton3: TSpeedButton
+        object BtnExcluir: TSpeedButton
           Left = 2
           Top = 2
           Width = 36
@@ -167,7 +164,6 @@ object PageProduto: TPageProduto
         Padding.Right = 2
         Padding.Bottom = 2
         TabOrder = 3
-        ExplicitLeft = 790
         object Image4: TImage
           AlignWithMargins = True
           Left = 5
@@ -182,13 +178,14 @@ object PageProduto: TPageProduto
           ExplicitWidth = 105
           ExplicitHeight = 105
         end
-        object SpeedButton5: TSpeedButton
+        object btnListar: TSpeedButton
           Left = 2
           Top = 2
           Width = 36
           Height = 36
           Align = alClient
           Flat = True
+          OnClick = btnListarClick
           ExplicitLeft = 0
           ExplicitTop = 8
           ExplicitWidth = 23
@@ -231,10 +228,6 @@ object PageProduto: TPageProduto
           end>
         TabOrder = 0
         ViewStyle = vsReport
-        ExplicitLeft = 98
-        ExplicitTop = -1
-        ExplicitWidth = 810
-        ExplicitHeight = 332
       end
     end
     object Panel6: TPanel
