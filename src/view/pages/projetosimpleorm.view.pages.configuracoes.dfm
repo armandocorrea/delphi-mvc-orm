@@ -11,8 +11,8 @@ object PageConfiguracoes: TPageConfiguracoes
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
-  PixelsPerInch = 96
+  OnCreate = FormCreate
+  OnShow = FormShow
   TextHeight = 13
   object pnlContainer: TPanel
     Left = 0
@@ -1244,6 +1244,7 @@ object PageConfiguracoes: TPageConfiguracoes
           Height = 36
           Align = alClient
           Flat = True
+          OnClick = SpeedButton2Click
           ExplicitLeft = 0
           ExplicitTop = 8
           ExplicitWidth = 23

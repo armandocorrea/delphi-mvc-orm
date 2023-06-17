@@ -15,7 +15,7 @@ uses
   Vcl.StdCtrls,
   Vcl.ExtCtrls,
   Vcl.Buttons,
-  Vcl.Imaging.pngimage;
+  Vcl.Imaging.pngimage, projetosimpleorm.controller.interfaces;
 
 type
   TPageConfiguracoes = class(TForm)
@@ -66,8 +66,13 @@ type
     Shape12: TShape;
     edtServidor: TEdit;
     procedure SpeedButton1Click(Sender: TObject);
+    procedure FormCreate(Sender: TObject);
+    procedure SpeedButton2Click(Sender: TObject);
+    procedure FormShow(Sender: TObject);
   private
+    FController: IController;
 
+    procedure CarregarDados;
   public
     { Public declarations }
   end;
@@ -77,12 +82,58 @@ var
 
 implementation
 
+uses
+  projetosimpleorm.controller.impl.controller;
+
 {$R *.dfm}
 
+procedure TPageConfiguracoes.CarregarDados;
+begin
+  try
+    edtTipo.Text := FController.Configuracao.DriverID;
+    edtPath.Text := FController.Configuracao.Database;
+    edtUserName.Text := FController.Configuracao.UserName;
+    edtPassword.Text := FController.Configuracao.Password;
+    edtPorta.Text := FController.Configuracao.Port;
+    edtSchema.Text := FController.Configuracao.Schema;
+    edtLocking.Text := FController.Configuracao.Locking;
+    edtServidor.Text := FController.Configuracao.Server;
+  except
+  end;
+end;
+
+procedure TPageConfiguracoes.FormCreate(Sender: TObject);
+begin
+  FController := TController.New;
+end;
+
+procedure TPageConfiguracoes.FormShow(Sender: TObject);
+begin
+  Self.CarregarDados;
+end;
 
 procedure TPageConfiguracoes.SpeedButton1Click(Sender: TObject);
 begin
   Close;
+end;
+
+procedure TPageConfiguracoes.SpeedButton2Click(Sender: TObject);
+begin
+  try
+    FController.Configuracao
+      .DriverID(edtTipo.Text)
+      .Database(edtPath.Text)
+      .Username(edtUsername.Text)
+      .Password(edtPassword.Text)
+      .Port(edtPorta.Text)
+      .Server(edtServidor.Text)
+      .Schema(edtSchema.Text)
+      .Locking(edtLocking.Text);
+
+    ShowMessage('Dados gravados com sucesso!');
+  except
+    raise Exception.Create('Erro ao tentar gravar os dados');
+  end;
 end;
 
 end.
