@@ -146,6 +146,7 @@ object PageProduto: TPageProduto
           Height = 36
           Align = alClient
           Flat = True
+          OnClick = BtnExcluirClick
           ExplicitLeft = 0
           ExplicitTop = 8
           ExplicitWidth = 23
@@ -226,6 +227,7 @@ object PageProduto: TPageProduto
             Caption = 'Pre'#231'o de Venda'
             Width = 150
           end>
+        RowSelect = True
         TabOrder = 0
         ViewStyle = vsReport
       end

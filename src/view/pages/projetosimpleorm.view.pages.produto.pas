@@ -67,6 +67,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure btnListarClick(Sender: TObject);
     procedure btnSalvarClick(Sender: TObject);
+    procedure BtnExcluirClick(Sender: TObject);
   private
     FController: IController;
   public
@@ -99,6 +100,21 @@ begin
   lImages.ResourceImage(Image4,'lista');
 end;
 
+procedure TPageProduto.BtnExcluirClick(Sender: TObject);
+begin
+  if ListView1.Items[ListView1.Selected.Index].Selected then
+  begin
+    if Application.MessageBox('Deseja realmente excluir este produto?', 'SimpleORM', MB_ICONQUESTION + MB_YesNo) = ID_YES then
+      FController
+        .Produto
+        .Id(ListView1.Items[ListView1.Selected.Index].Caption.ToInteger)
+        .Build
+        .Excluir;
+
+      ListView1.Items[ListView1.Selected.Index].Delete;
+  end;
+end;
+
 procedure TPageProduto.btnListarClick(Sender: TObject);
 var
   lList: TListItem;
@@ -124,7 +140,7 @@ begin
       lDataSource.DataSet.Next;
     end;
   finally
-    lDataSource.DisposeOf;
+    //lDataSource.DisposeOf;
   end;
 end;
 
@@ -142,7 +158,7 @@ begin
   try
     try
       if not (imgFoto.Picture = nil) then
-        imgFoto.Picture.LoadFromStream(lStream);
+        imgFoto.Picture.SaveToStream(lStream);
 
       FController
         .Produto
