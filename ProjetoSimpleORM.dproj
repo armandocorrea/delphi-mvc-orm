@@ -140,6 +140,9 @@
         <DCCReference Include="src\controller\dto\impl\projetosimpleorm.controller.dto.impl.endereco.pas"/>
         <DCCReference Include="src\controller\dto\impl\projetosimpleorm.controller.dto.impl.pedido.pas"/>
         <DCCReference Include="src\controller\dto\impl\projetosimpleorm.controller.dto.impl.pedidoitens.pas"/>
+        <DCCReference Include="src\controller\projetosimpleorm.controller.interfaces.pas"/>
+        <DCCReference Include="src\controller\impl\projetosimpleorm.controller.impl.controller.pas"/>
+        <DCCReference Include="src\controller\dto\impl\projetosimpleorm.controller.dto.impl.produto.pas"/>
         <RcItem Include="src\assert\configuracao.png">
             <ResourceType>RCDATA</ResourceType>
             <ResourceId>configuracao</ResourceId>

@@ -27,7 +27,10 @@ uses
   projetosimpleorm.controller.dto.impl.pessoa in 'src\controller\dto\impl\projetosimpleorm.controller.dto.impl.pessoa.pas',
   projetosimpleorm.controller.dto.impl.endereco in 'src\controller\dto\impl\projetosimpleorm.controller.dto.impl.endereco.pas',
   projetosimpleorm.controller.dto.impl.pedido in 'src\controller\dto\impl\projetosimpleorm.controller.dto.impl.pedido.pas',
-  projetosimpleorm.controller.dto.impl.pedidoitens in 'src\controller\dto\impl\projetosimpleorm.controller.dto.impl.pedidoitens.pas';
+  projetosimpleorm.controller.dto.impl.pedidoitens in 'src\controller\dto\impl\projetosimpleorm.controller.dto.impl.pedidoitens.pas',
+  projetosimpleorm.controller.interfaces in 'src\controller\projetosimpleorm.controller.interfaces.pas',
+  projetosimpleorm.controller.impl.controller in 'src\controller\impl\projetosimpleorm.controller.impl.controller.pas',
+  projetosimpleorm.controller.dto.impl.produto in 'src\controller\dto\impl\projetosimpleorm.controller.dto.impl.produto.pas';
 
 {$R *.res}
 begin
