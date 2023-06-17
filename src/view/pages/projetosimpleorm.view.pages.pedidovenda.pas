@@ -26,7 +26,8 @@ uses
   projetosimpleorm.view.pages.produto,
   projetosimpleorm.view.pages.configuracoes,
   projetosimpleorm.view.utils.interfaces,
-  projetosimpleorm.view.utils.impl.forms;
+  projetosimpleorm.view.utils.impl.forms,
+  projetosimpleorm.controller.interfaces;
 
 type
   TPagePedidoVenda = class(TForm)
@@ -122,9 +123,13 @@ type
     procedure btnConfirmarClick(Sender: TObject);
     procedure btnCancelarpedidoClick(Sender: TObject);
     procedure FormClose(Sender: TObject; var Action: TCloseAction);
+    procedure edtCodigoClienteChange(Sender: TObject);
+    procedure edtCodigoProdutoChange(Sender: TObject);
+    procedure btnFinalizarPedidoClick(Sender: TObject);
   private
     FForms: iForm;
     FDataSource : TDataSource;
+    FController: IController;
 
     procedure FixarTamanhoForm;
     procedure PreencheList;
@@ -140,6 +145,8 @@ var
 
 implementation
 
+uses
+  projetosimpleorm.controller.impl.controller;
 {$R *.dfm}
 
 procedure TPagePedidoVenda.FormClose(Sender: TObject; var Action: TCloseAction);
@@ -153,6 +160,7 @@ begin
   FDataSource := TDataSource.Create(nil);
 
   FForms := TForms.New;
+  FController := TController.New;
 end;
 
 procedure TPagePedidoVenda.SplitViewAction(Value: TSplitView);
@@ -171,6 +179,10 @@ begin
   ListItem.SubItems.Add(edtValorUnitario.Text);
   ListItem.SubItems.Add(FormatFloat('#,##0.00',(FDataSource.DataSet.FieldByName('precovenda').AsCurrency*
     (StrToInt(edtQuantidade.Text)))));
+
+  edtCodigoProduto.Clear;
+  edtQuantidade.Clear;
+  edtValorUnitario.Clear;
 end;
 
 procedure TPagePedidoVenda.SpeedButton1Click(Sender: TObject);
@@ -226,6 +238,32 @@ begin
   PreencheList;
 end;
 
+procedure TPagePedidoVenda.btnFinalizarPedidoClick(Sender: TObject);
+var
+  lId: Integer;
+  I: Integer;
+begin
+  try
+    lId := FController.Pedido.IdCliente(StrToInt(edtCodigoCliente.Text))
+      .Build.Inserir.This.Id;
+
+    for I := 0 to Pred(ListPedidoProduto.Items.Count) do
+    begin
+      FController.PedidoItens
+        .IdPedido(lId)
+        .IdProduto(ListPedidoProduto.Items[I].Caption.ToInteger)
+        .Quantidade(ListPedidoProduto.Items[I].SubItems[1].ToInteger)
+        .ValorUnitario(ListPedidoProduto.Items[I].SubItems[2].ToDouble)
+        .ValorTotal(ListPedidoProduto.Items[I].SubItems[3].ToDouble)
+        .Build.Inserir;
+    end;
+
+    ShowMessage(Format('O pedido %.d5 realizado com sucesso', [lId.ToString]));
+  except
+    raise Exception.Create('Não foi possível realizar o pedido.');
+  end;
+end;
+
 procedure TPagePedidoVenda.ChamaForm(Key: String; Form: TComponentClass);
 begin
   FForms
@@ -233,6 +271,31 @@ begin
     .ComponentClass(Form)
     .Parent(pnlEmb)
     .FormAction.Add;
+end;
+
+procedure TPagePedidoVenda.edtCodigoClienteChange(Sender: TObject);
+var
+  lId: Integer;
+begin
+  if TryStrToInt(edtCodigoCliente.Text, lId) then
+    edtNomeCliente.Text := FController.Pessoa.Build.ListarPorId(
+      FController.Cliente.Build.ListarPorId(lId).This.IdPessoa).This.Nome;
+end;
+
+procedure TPagePedidoVenda.edtCodigoProdutoChange(Sender: TObject);
+var
+  lId: Integer;
+begin
+  if TryStrToInt(edtCodigoProduto.Text, lId) then
+  begin
+    FController.Produto.Build.DataSource(FDataSource).ListarPorId(lId);
+    if not FDataSource.DataSet.IsEmpty then
+    begin
+      edtValorUnitario.Text := FormatFloat('#.##0,00', FDataSource.DataSet.FieldByName('precovenda').AsFloat);
+      Exit;
+    end;
+  end;
+  ShowMessage('Não foi possível encontrar nenhum produto com o código informado.');
 end;
 
 end.
