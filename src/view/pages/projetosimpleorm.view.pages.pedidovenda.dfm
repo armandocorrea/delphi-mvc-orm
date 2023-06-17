@@ -12,11 +12,9 @@ object PagePedidoVenda: TPagePedidoVenda
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
   Position = poDesktopCenter
   OnClose = FormClose
   OnCreate = FormCreate
-  PixelsPerInch = 96
   TextHeight = 13
   object pnlback: TPanel
     Left = 0
@@ -28,6 +26,8 @@ object PagePedidoVenda: TPagePedidoVenda
     Color = clWhite
     ParentBackground = False
     TabOrder = 0
+    ExplicitWidth = 856
+    ExplicitHeight = 669
     object pnlContainer: TPanel
       Left = 0
       Top = 40
@@ -38,6 +38,8 @@ object PagePedidoVenda: TPagePedidoVenda
       Color = clWhite
       ParentBackground = False
       TabOrder = 0
+      ExplicitWidth = 856
+      ExplicitHeight = 629
       DesignSize = (
         860
         630)
@@ -48,6 +50,8 @@ object PagePedidoVenda: TPagePedidoVenda
         Height = 630
         Align = alClient
         TabOrder = 2
+        ExplicitWidth = 856
+        ExplicitHeight = 629
         object Panel4: TPanel
           Left = 1
           Top = 1
@@ -58,6 +62,8 @@ object PagePedidoVenda: TPagePedidoVenda
           Color = clWhite
           ParentBackground = False
           TabOrder = 0
+          ExplicitWidth = 854
+          ExplicitHeight = 627
           object Panel1: TPanel
             Left = 0
             Top = 0
@@ -68,6 +74,7 @@ object PagePedidoVenda: TPagePedidoVenda
             Padding.Left = 10
             Padding.Right = 10
             TabOrder = 0
+            ExplicitWidth = 854
             object Panel13: TPanel
               Left = 10
               Top = 0
@@ -76,6 +83,7 @@ object PagePedidoVenda: TPagePedidoVenda
               Align = alTop
               BevelOuter = bvNone
               TabOrder = 0
+              ExplicitWidth = 834
               object Panel22: TPanel
                 Left = 522
                 Top = 0
@@ -85,6 +93,7 @@ object PagePedidoVenda: TPagePedidoVenda
                 BevelOuter = bvNone
                 Enabled = False
                 TabOrder = 0
+                ExplicitLeft = 518
                 object Label9: TLabel
                   Left = 32
                   Top = 7
@@ -194,6 +203,7 @@ object PagePedidoVenda: TPagePedidoVenda
                 Align = alClient
                 BevelOuter = bvNone
                 TabOrder = 1
+                ExplicitWidth = 518
                 object Label2: TLabel
                   Left = 0
                   Top = 0
@@ -235,6 +245,7 @@ object PagePedidoVenda: TPagePedidoVenda
               Align = alClient
               BevelOuter = bvNone
               TabOrder = 1
+              ExplicitWidth = 670
               object Label13: TLabel
                 Left = 0
                 Top = 9
@@ -537,6 +548,7 @@ object PagePedidoVenda: TPagePedidoVenda
               Align = alRight
               BevelOuter = bvNone
               TabOrder = 2
+              ExplicitLeft = 680
               object Panel25: TPanel
                 Left = 14
                 Top = 83
@@ -593,6 +605,8 @@ object PagePedidoVenda: TPagePedidoVenda
             Padding.Right = 10
             Padding.Bottom = 10
             TabOrder = 1
+            ExplicitWidth = 854
+            ExplicitHeight = 360
             object Panel16: TPanel
               Left = 10
               Top = 0
@@ -601,6 +615,7 @@ object PagePedidoVenda: TPagePedidoVenda
               Align = alTop
               BevelOuter = bvNone
               TabOrder = 0
+              ExplicitWidth = 834
               object pnlTitleDescricao: TPanel
                 AlignWithMargins = True
                 Left = 94
@@ -792,6 +807,7 @@ object PagePedidoVenda: TPagePedidoVenda
                 ParentBackground = False
                 ParentFont = False
                 TabOrder = 4
+                ExplicitWidth = 269
                 object Label7: TLabel
                   Left = 0
                   Top = 5
@@ -854,6 +870,8 @@ object PagePedidoVenda: TPagePedidoVenda
               ShowColumnHeaders = False
               TabOrder = 1
               ViewStyle = vsReport
+              ExplicitWidth = 834
+              ExplicitHeight = 320
             end
           end
           object Panel3: TPanel
@@ -866,6 +884,8 @@ object PagePedidoVenda: TPagePedidoVenda
             Padding.Left = 10
             Padding.Right = 10
             TabOrder = 2
+            ExplicitTop = 569
+            ExplicitWidth = 854
             object Panel26: TPanel
               Left = 10
               Top = 0
@@ -968,6 +988,7 @@ object PagePedidoVenda: TPagePedidoVenda
               Align = alClient
               BevelOuter = bvNone
               TabOrder = 1
+              ExplicitWidth = 434
               DesignSize = (
                 438
                 58)
@@ -983,6 +1004,7 @@ object PagePedidoVenda: TPagePedidoVenda
                 Padding.Right = 5
                 Padding.Bottom = 5
                 TabOrder = 0
+                ExplicitLeft = 172
                 object Shape5: TShape
                   Left = 5
                   Top = 5
@@ -1038,6 +1060,7 @@ object PagePedidoVenda: TPagePedidoVenda
         OpenedWidth = 200
         Placement = svpLeft
         TabOrder = 0
+        ExplicitHeight = 629
         object pnlMenu: TPanel
           Left = 0
           Top = 0
@@ -1050,6 +1073,7 @@ object PagePedidoVenda: TPagePedidoVenda
           Padding.Right = 5
           Padding.Bottom = 5
           TabOrder = 0
+          ExplicitHeight = 629
           object Panel19: TPanel
             AlignWithMargins = True
             Left = 5
@@ -1099,7 +1123,7 @@ object PagePedidoVenda: TPagePedidoVenda
               Width = 190
               Height = 41
               Align = alClient
-              Caption = 'Clintes'
+              Caption = 'Clientes'
               Flat = True
               Font.Charset = DEFAULT_CHARSET
               Font.Color = clWhite
@@ -1128,6 +1152,7 @@ object PagePedidoVenda: TPagePedidoVenda
             Color = 7381814
             ParentBackground = False
             TabOrder = 2
+            ExplicitTop = 583
             object SpeedButton4: TSpeedButton
               Left = 0
               Top = 0
@@ -1159,6 +1184,7 @@ object PagePedidoVenda: TPagePedidoVenda
       Color = clWhite
       ParentBackground = False
       TabOrder = 1
+      ExplicitWidth = 856
       object Panel18: TPanel
         Left = 0
         Top = 0
@@ -1511,6 +1537,7 @@ object PagePedidoVenda: TPagePedidoVenda
         Padding.Right = 2
         Padding.Bottom = 2
         TabOrder = 1
+        ExplicitLeft = 816
         object Image2: TImage
           AlignWithMargins = True
           Left = 9

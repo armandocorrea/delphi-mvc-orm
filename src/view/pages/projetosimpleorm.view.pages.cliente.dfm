@@ -12,9 +12,7 @@ object PageCliente: TPageCliente
   Font.Height = -11
   Font.Name = 'Tahoma'
   Font.Style = []
-  OldCreateOrder = False
   OnCreate = FormCreate
-  PixelsPerInch = 96
   TextHeight = 13
   object pnlContainer: TPanel
     Left = 0
@@ -790,14 +788,14 @@ object PageCliente: TPageCliente
           ExplicitWidth = 105
           ExplicitHeight = 105
         end
-        object SpeedButton1: TSpeedButton
+        object btnSair: TSpeedButton
           Left = 2
           Top = 2
           Width = 36
           Height = 36
           Align = alClient
           Flat = True
-          OnClick = SpeedButton1Click
+          OnClick = btnSairClick
           ExplicitLeft = 0
           ExplicitTop = 8
           ExplicitWidth = 23
@@ -1239,13 +1237,14 @@ object PageCliente: TPageCliente
           ExplicitWidth = 105
           ExplicitHeight = 105
         end
-        object SpeedButton2: TSpeedButton
+        object btnSalvar: TSpeedButton
           Left = 2
           Top = 2
           Width = 36
           Height = 36
           Align = alClient
           Flat = True
+          OnClick = btnSalvarClick
           ExplicitLeft = 0
           ExplicitTop = 8
           ExplicitWidth = 23
@@ -1937,7 +1936,7 @@ object PageCliente: TPageCliente
           ExplicitWidth = 105
           ExplicitHeight = 105
         end
-        object SpeedButton3: TSpeedButton
+        object btnExcluir: TSpeedButton
           Left = 2
           Top = 2
           Width = 36
@@ -2813,7 +2812,7 @@ object PageCliente: TPageCliente
         Padding.Right = 15
         Padding.Bottom = 10
         TabOrder = 1
-        object ListViewProdutos: TListView
+        object ListViewEndereco: TListView
           Left = 15
           Top = 0
           Width = 625
@@ -2840,10 +2839,6 @@ object PageCliente: TPageCliente
             end>
           TabOrder = 0
           ViewStyle = vsReport
-          ExplicitLeft = 96
-          ExplicitTop = 48
-          ExplicitWidth = 250
-          ExplicitHeight = 150
         end
       end
       object Panel17: TPanel
@@ -2854,7 +2849,6 @@ object PageCliente: TPageCliente
         Align = alClient
         BevelOuter = bvNone
         TabOrder = 2
-        ExplicitHeight = 237
         object Label8: TLabel
           Left = 15
           Top = 90
@@ -3288,6 +3282,7 @@ object PageCliente: TPageCliente
             Font.Name = 'Tahoma'
             Font.Style = []
             ParentFont = False
+            OnClick = btnAdicionarEnderecoClick
             ExplicitLeft = -11
             ExplicitWidth = 143
           end

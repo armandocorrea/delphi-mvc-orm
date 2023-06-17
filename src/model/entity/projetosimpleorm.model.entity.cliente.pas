@@ -42,7 +42,8 @@ type
       [Campo('TELEFONE')]
       property Telefone: String read FTelefone write FTelefone;
 
-      [Campo('FOTO', 'Blob')]
+      //[Campo('FOTO', 'Blob')]
+      [Campo('FOTO')]
       property Foto: TStream read FFoto write SetFoto;
   end;
 

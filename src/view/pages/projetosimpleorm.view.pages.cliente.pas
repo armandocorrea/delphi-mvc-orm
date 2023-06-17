@@ -1,7 +1,5 @@
 unit projetosimpleorm.view.pages.cliente;
-
 interface
-
 uses
   Winapi.Windows,
   Winapi.Messages,
@@ -22,21 +20,21 @@ uses
   Datasnap.DBClient,
   Vcl.ComCtrls,
   Vcl.Imaging.pngimage,
-  projetosimpleorm.view.utils.impl.resourceimage;
-
+  projetosimpleorm.view.utils.impl.resourceimage,
+  projetosimpleorm.controller.interfaces;
 type
   TPageCliente = class(TForm)
     pnlContainer: TPanel;
     Panel1: TPanel;
     Panel2: TPanel;
     Image1: TImage;
-    SpeedButton1: TSpeedButton;
+    btnSair: TSpeedButton;
     Panel3: TPanel;
     Image2: TImage;
-    SpeedButton2: TSpeedButton;
+    btnSalvar: TSpeedButton;
     Panel4: TPanel;
     Image3: TImage;
-    SpeedButton3: TSpeedButton;
+    btnExcluir: TSpeedButton;
     Panel12: TPanel;
     Panel13: TPanel;
     Shape8: TShape;
@@ -108,37 +106,132 @@ type
     OD: TOpenDialog;
     Panel26: TPanel;
     Shape17: TShape;
-    ListViewProdutos: TListView;
-    procedure SpeedButton1Click(Sender: TObject);
+    ListViewEndereco: TListView;
+    procedure btnSairClick(Sender: TObject);
     procedure SpeedButton4Click(Sender: TObject);
     procedure FormCreate(Sender: TObject);
+    procedure btnSalvarClick(Sender: TObject);
+    procedure btnAdicionarEnderecoClick(Sender: TObject);
   private
-    
+    FController: IController;
+    FDataSet: TClientDataSet;
+    procedure TabelaTemporaria;
+    procedure AdicionarProdutoLista;
   public
-
   end;
-
 var
   PageCliente: TPageCliente;
-
 implementation
 
+uses
+  projetosimpleorm.controller.impl.controller;
 {$R *.dfm}
+procedure TPageCliente.btnSalvarClick(Sender: TObject);
+var
+  lFoto: TMemoryStream;
+  lId: Integer;
+begin
+  try
+    lFoto := TMemoryStream.Create;
+    try
+      imgFoto.Picture.SaveToStream(lFoto);
+      lId := FController
+               .Pessoa
+               .Nome(edtNome.Text)
+               .DataNascReg(StrToDate(edtdataNascimento.Text))
+               .Build.Inserir
+               .This
+               .Id;
+
+      FController.Cliente
+        .IdPessoa(lId)
+        .Tipo(edtTipo.Text)
+        .CpfCnpj(edtCpfCnpj.Text)
+        .Email(edtEmail.Text)
+        .Telefone(edtTelefone.Text)
+        //.Foto(lFoto)
+        .Build.Inserir;
+
+      FDataSet.First;
+      while not FDataSet.Eof do
+      begin
+        FController.Endereco
+          .IdPessoa(lId)
+          .Logradouro(FDataSet.Fields[0].AsString)
+          .Tipo(FDataSet.Fields[6].AsString)
+          .Numero(FDataSet.Fields[1].AsString)
+          .Complemento(FDataSet.Fields[2].AsString)
+          .Bairro(FDataSet.Fields[3].AsString)
+          .Cidade(FDataSet.Fields[4].AsString)
+          .Estado(FDataSet.Fields[5].AsString)
+          .Build.Inserir;
+
+        FDataSet.Next;
+      end;
+
+      ShowMessage('Cliente cadastrado com sucesso!');
+    finally
+      lFoto.DisposeOf;
+    end;
+  except
+    raise Exception.Create('Não foi possível cadastrar o cliente.');
+  end;
+end;
 
 procedure TPageCliente.FormCreate(Sender: TObject);
 begin
+  FController := TController.New;
   TResourceImage.New.ResourceImage(imgFoto,'noimage');
+  Self.TabelaTemporaria;
+end;
+procedure TPageCliente.AdicionarProdutoLista;
+var
+  lList: TListItem;
+begin
+  lList := ListViewEndereco.Items.Add;
+  lList.Caption := edtTipoEndereco.Text;
+  lList.SubItems.Add(edtLogradouro.Text);
+  lList.SubItems.Add(edtNumero.Text);
+  lList.SubItems.Add(edtComplemento.Text);
 end;
 
-procedure TPageCliente.SpeedButton1Click(Sender: TObject);
+procedure TPageCliente.btnAdicionarEnderecoClick(Sender: TObject);
+begin
+  FDataset.Append;
+  FDataSet.Fields[0].AsString := edtLogradouro.Text;
+  FDataSet.Fields[1].AsString := edtNumero.Text;
+  FDataSet.Fields[2].AsString := edtComplemento.Text;
+  FDataSet.Fields[3].AsString := edtBairro.Text;
+  FDataSet.Fields[4].AsString := edtCidade.Text;
+  FDataSet.Fields[5].AsString := edtEstado.Text;
+  FDataSet.Fields[6].AsString := edtTipoEndereco.Text;
+  FDataSet.Post;
+
+  Self.AdicionarProdutoLista;
+end;
+
+procedure TPageCliente.btnSairClick(Sender: TObject);
 begin
   close;
+  FDataSet.DisposeOf;
 end;
-
 procedure TPageCliente.SpeedButton4Click(Sender: TObject);
 begin
   if OD.Execute then
     imgFoto.Picture.LoadFromFile(OD.FileName);
+end;
+procedure TPageCliente.TabelaTemporaria;
+begin
+  FDataSet := TClientDataSet.Create(nil);
+  FDataSet.Close;
+  FDataSet.FieldDefs.Add('logradouro', ftString, 100);
+  FDataSet.FieldDefs.Add('numero', ftString, 100);
+  FDataSet.FieldDefs.Add('complemento', ftString, 100);
+  FDataSet.FieldDefs.Add('bairro', ftString, 100);
+  FDataSet.FieldDefs.Add('cidade', ftString, 100);
+  FDataSet.FieldDefs.Add('estado', ftString, 100);
+  FDataSet.FieldDefs.Add('tipo', ftString, 100);
+  FDataSet.CreateDataSet;
 end;
 
 end.
